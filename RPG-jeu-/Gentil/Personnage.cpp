@@ -35,3 +35,15 @@ void Personnage::setAttaque(int valeur)
 {
     attaque = valeur;
 }
+int Personnage::Capacite()
+{
+    return capacite;
+}
+void Personnage::setPouvoir(int pouvoir)
+{
+    capacite = pouvoir;
+}
+void Personnage:: setPointVie(int valeur)
+{
+    vie = valeur;
+}

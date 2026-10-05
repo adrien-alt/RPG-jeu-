@@ -8,12 +8,9 @@ using namespace std;
 class Hero : public Personnage
 {
 private:
-    int capacite;
 public:
     Hero();
     ~Hero();
-
-    int Capacite();
     
     void setPouvoir(int pouvoir);
 

@@ -11,14 +11,6 @@ Mage::Mage()
 Mage::~Mage()
 {
 }
-int Mage::Capacite()
-{
-    return capacite;
-}
-void Mage::setPouvoir(int pouvoir)
-{
-    capacite = pouvoir;
-}
 int Mage::Mana()
 {
     return mana;

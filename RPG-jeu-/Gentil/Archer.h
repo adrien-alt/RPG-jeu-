@@ -8,12 +8,10 @@ using namespace std;
 class Archer : public Personnage
 {
 private:
-    int capacite;
 public:
     Archer();
     ~Archer();
 
-    int Capacite();
     
     void setPouvoir(int pouvoir);
 

@@ -10,11 +10,3 @@ Hero::Hero()
 Hero::~Hero()
 {
 }
-int Hero::Capacite()
-{
-    return capacite;
-}
-void Hero::setPouvoir(int pouvoir)
-{
-    capacite = pouvoir;
-}

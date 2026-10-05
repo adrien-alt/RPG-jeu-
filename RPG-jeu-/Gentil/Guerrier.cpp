@@ -10,11 +10,3 @@ Guerrier::Guerrier()
 Guerrier::~Guerrier()
 {
 }
-int Guerrier::Capacite()
-{
-    return capacite;
-}
-void Guerrier::setPouvoir(int pouvoir)
-{
-    capacite = pouvoir;
-}

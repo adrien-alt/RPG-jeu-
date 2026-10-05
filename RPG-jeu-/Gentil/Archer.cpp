@@ -10,11 +10,3 @@ Archer::Archer()
 Archer::~Archer()
 {
 }
-int Archer::Capacite()
-{
-    return capacite;
-}
-void Archer::setPouvoir(int pouvoir)
-{
-    capacite = pouvoir;
-}
