@@ -7,12 +7,15 @@ using namespace std;
 
 class Guerrier : public Personnage
 {
+private:
+    int capacite;
 public:
     Guerrier();
     ~Guerrier();
 
-    int Attaquer(int attaque);
-    int Defendre(int defense);
+    int Capacite();
+    
+    void setPouvoir(int pouvoir);
 
 };
 

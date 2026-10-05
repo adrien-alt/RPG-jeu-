@@ -1,77 +1,47 @@
 #include "Personnage.h"
 #include "Guerrier.h"
 #include "Mage.h"
-#include "Ennemi.h"
-#include "Inventaire.h"
-#include "Objet.h"
+#include "Hero.h"
+#include "Archer.h"
 #include <iostream>
-#include <random>
 
 using namespace std;
 
 int main()
 {
-    Ennemi pv;
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_int_distribution<> distrib(10, 20);
-    Ennemi ennemi;
-    Inventaire inventaire;
-
+    Personnage* compagnon;
+    Hero* hero = new Hero();
     int choix;
-    int decision;
-    int degatsJoueur;
-    int degatsEnnemi;
-    int degatsReels;
-    int protectionRestante;
-    int degatsRestant;
-    int pvJoueur;
 
-    cout <<"choississez un personnage: "<<endl;
-    cout<<"1. Pour le guerrier"<<endl;
-    cout<<"2. Pour le mage"<<endl;
+    cout<<"Création du Héro"<<endl;
+    cout<<"Vie du Héro:"<<hero->RecupPointVie()<<endl;
+    cout<<"Attaque du Héro"<< hero->RecupAttaque()<<endl;
+    cout<<"Choisissez votre 1er compagnon: "<<endl;
+    cout<<"Guerrier"<<endl;
+    cout<<"Mage"<<endl;
     cin >> choix;
-    Personnage* joueur;
-    Personnage pointVie;
     if(choix == 1)
     {
-        joueur = new Guerrier();
+        compagnon  = new Guerrier();
+        cout<<"Tu as choisit: Guerrier"<<endl;
+        cout<<"Vie: "<<compagnon ->RecupPointVie()<<endl;
+        cout<<"Attaque: "<<compagnon ->RecupAttaque()<<endl;
+    }
+    else if(choix == 2){
+        compagnon = new Mage();
+        cout<<"tu as choisit: Mage"<<endl;
+        cout<<"Vie: "<<compagnon ->RecupPointVie()<<endl;
+        cout<<"Attaque"<<compagnon ->RecupAttaque()<<endl;
+    }
+    else if(choix == 3)
+    {
+        compagnon = new Archer();
+        cout<<"Tu as choisit: Archer"<<endl;
+        cout<<"Vie: "<<compagnon ->RecupPointVie()<<endl;
+        cout<<"Attaque"<<compagnon ->RecupAttaque()<<endl;
     }
     else
     {
-        joueur = new Mage();
+        cout<<"choix invalide"<<endl;
     }
-    cout<<"Un ennemi vient vers toi tu fait quoi ?: "<<endl;
-    cout<<"1. Combattre"<<endl;
-    cout<<"2. Fuir"<<endl;
-    cin >> decision;
-    while(true)
-    {
-        degatsJoueur = joueur->RecupAttaque();
-        cout << "Tu mets : " << degatsJoueur << " de degats" << endl;
-        int pvEnnemi = ennemi.RecevoirDegats(degatsJoueur);
-        cout << "Vie restante ennemie : " << pvEnnemi << endl;
-
-        if(pvEnnemi == 0)
-        {
-            cout << "Tu as gagne !" << endl;
-            break;
-        }
-
-        degatsEnnemi = distrib(gen);
-        cout << "L'ennemi met : " << degatsEnnemi << " de degats" << endl;
-
-        degatsReels = joueur->RecevoirShiel(degatsEnnemi);
-        cout <<"Durabilit restante" << degatsReels<<endl;
-        pvJoueur = joueur -> RecevoirDegats(degatsReels);
-        cout << "Vie restante joueur : " << pvJoueur << endl;
-
-        if(pvJoueur == 0)
-        {
-            cout << "Tu as perdu !" << endl;
-            break;
-        }
-    }
-
-    return 0;
 }
