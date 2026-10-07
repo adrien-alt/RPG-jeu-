@@ -61,8 +61,16 @@ int main()
     cout << "Il y a un ennemi tu choisis quoi: " << endl;
     cout << "1. Combattre" << endl;
     cout << "2. Fuir" << endl;
+    cout << endl;
     while (true)
     {
+        cout << "====================================" << endl;
+        cout << "Qui doit commencer ?" << endl;
+        cout << "1. Le hero" << endl;
+        cout << "2. Le compagnon: " << compagnon << endl;
+        cout << "====================================" << endl;
+        cin >> decision;
+        cout << endl;
         cout << "====================================" << endl;
         cout << "1. Attaquer" << endl;
         cout << "2. Capacite" << endl;
