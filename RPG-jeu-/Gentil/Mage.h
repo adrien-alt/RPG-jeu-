@@ -14,8 +14,7 @@ public:
     ~Mage();
 
     int Mana();
-    
-    void setPouvoir(int pouvoir);
+
     void setMana(int power);
 
 };

@@ -47,3 +47,11 @@ void Personnage::setPointVie(int valeur)
 {
     vie = valeur;
 }
+string Personnage::RecupNom()
+{
+    return nom;
+}
+void Personnage::setNom(string valeur)
+{
+    nom = valeur;
+}

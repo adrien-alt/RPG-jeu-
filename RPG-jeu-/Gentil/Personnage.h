@@ -25,6 +25,9 @@ public:
     void setAttaque(int valeur);
     void setPointVie(int valeur);
     void setCapacite(int valeur);
+    void setNom(string valeur);
+
+    string RecupNom();
 };
 
 #endif

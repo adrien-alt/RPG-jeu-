@@ -34,42 +34,40 @@ int main()
     {
         compagnon = new Guerrier();
         cout << "Tu as choisit: Guerrier" << endl;
-        cout << "Vie: " << compagnon->RecupPointVie() << endl;
-        cout << "Attaque: " << compagnon->RecupAttaque() << endl;
-        compagnon->setCapacite(300);
+        compagnon->RecupNom();
     }
     else if (choix == 2)
     {
         compagnon = new Mage();
         cout << "tu as choisit: Mage" << endl;
-        cout << "Vie: " << compagnon->RecupPointVie() << endl;
-        cout << "Attaque: " << compagnon->RecupAttaque() << endl;
-        compagnon->setCapacite(250);
+        compagnon->RecupNom();
     }
     else if (choix == 3)
     {
         compagnon = new Archer();
         cout << "Tu as choisit: Archer" << endl;
-        cout << "Vie: " << compagnon->RecupPointVie() << endl;
-        cout << "Attaque: " << compagnon->RecupAttaque() << endl;
-        compagnon->setCapacite(150);
+        compagnon->RecupNom();
     }
     else
     {
         cout << "choix invalide" << endl;
     }
+    cout << "Vie: " << compagnon->RecupPointVie() << endl;
+    cout << "Attaque: " << compagnon->RecupAttaque() << endl;
+    cout << "====================================" << endl;
+
     cout << "Il y a un ennemi tu choisis quoi: " << endl;
     cout << "1. Combattre" << endl;
     cout << "2. Fuir" << endl;
     cout << endl;
+    cout << "====================================" << endl;
+    cout << "Qui doit commencer ?" << endl;
+    cout << "1. Le hero" << endl;
+    cout << "2. Le compagnon: " << compagnon->RecupNom()<< endl;
+    cout << "====================================" << endl;
+    cin >> decision;
     while (true)
     {
-        cout << "====================================" << endl;
-        cout << "Qui doit commencer ?" << endl;
-        cout << "1. Le hero" << endl;
-        cout << "2. Le compagnon: " << compagnon << endl;
-        cout << "====================================" << endl;
-        cin >> decision;
         cout << endl;
         cout << "====================================" << endl;
         cout << "1. Attaquer" << endl;
@@ -122,5 +120,7 @@ int main()
         {
             cout << "Choix invalide" << endl;
         }
+            //compagnon
+
     }
 }
