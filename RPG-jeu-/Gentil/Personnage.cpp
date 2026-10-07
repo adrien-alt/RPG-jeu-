@@ -17,7 +17,7 @@ int Personnage::Attaquer()
 int Personnage::RecevoirDegats(int degats)
 {
     vie = vie - degats;
-    if(vie < 0)
+    if (vie < 0)
     {
         vie = 0;
     }
@@ -39,11 +39,11 @@ int Personnage::Capacite()
 {
     return capacite;
 }
-void Personnage::setPouvoir(int pouvoir)
+void Personnage::setCapacite(int valeur)
 {
-    capacite = pouvoir;
+    capacite = valeur;
 }
-void Personnage:: setPointVie(int valeur)
+void Personnage::setPointVie(int valeur)
 {
     vie = valeur;
 }

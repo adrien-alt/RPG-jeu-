@@ -24,6 +24,7 @@ int main()
     cout << "Création du Héro" << endl;
     cout << "Vie du Héro:" << hero->RecupPointVie() << endl;
     cout << "Attaque du Héro: " << hero->RecupAttaque() << endl;
+    cout << "Capacite du Hero: " << hero->Capacite() << endl;
     cout << "Choisissez votre 1er compagnon: " << endl;
     cout << "1. Guerrier" << endl;
     cout << "2. Mage" << endl;
@@ -35,7 +36,7 @@ int main()
         cout << "Tu as choisit: Guerrier" << endl;
         cout << "Vie: " << compagnon->RecupPointVie() << endl;
         cout << "Attaque: " << compagnon->RecupAttaque() << endl;
-        compagnon->setPouvoir(300);
+        compagnon->setCapacite(300);
     }
     else if (choix == 2)
     {
@@ -43,7 +44,7 @@ int main()
         cout << "tu as choisit: Mage" << endl;
         cout << "Vie: " << compagnon->RecupPointVie() << endl;
         cout << "Attaque: " << compagnon->RecupAttaque() << endl;
-        compagnon->setPouvoir(250);
+        compagnon->setCapacite(250);
     }
     else if (choix == 3)
     {
@@ -51,7 +52,7 @@ int main()
         cout << "Tu as choisit: Archer" << endl;
         cout << "Vie: " << compagnon->RecupPointVie() << endl;
         cout << "Attaque: " << compagnon->RecupAttaque() << endl;
-        compagnon->setPouvoir(150);
+        compagnon->setCapacite(150);
     }
     else
     {

@@ -24,7 +24,7 @@ public:
 
     void setAttaque(int valeur);
     void setPointVie(int valeur);
-    void setPouvoir(int pouvoir);
+    void setCapacite(int valeur);
 };
 
 #endif

@@ -11,8 +11,6 @@ private:
 public:
     Hero();
     ~Hero();
-
-    void setPouvoir(int pouvoir);
 };
 
 #endif
