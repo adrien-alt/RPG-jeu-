@@ -55,3 +55,11 @@ void Personnage::setNom(string valeur)
 {
     nom = valeur;
 }
+int Personnage::ChangerRole()
+{
+    return role;
+}
+void Personnage::setRole(int valeur)
+{
+    role = valeur;
+}

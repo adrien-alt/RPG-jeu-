@@ -21,7 +21,11 @@ int main()
     int decision;
     int degatJoueur;
     int degatEnnemi;
+    int changerRole;
     string binaire;
+
+    hero->setRole(1);
+    compagnon->setRole(2);
 
     std::cout << "Création du Héro" << endl;
     std::cout << "Vie du Héro:" << hero->RecupPointVie() << endl;
@@ -122,6 +126,22 @@ int main()
             cin >> binaire;
             if (binaire == "Oui" or binaire == "oui")
             {
+                cout << "Que choisis tu :" << endl;
+                cout << "1. Hero" << endl;
+                cout << "2. Compagnon" << endl;
+                cin >> decision;
+                if (decision == 1)
+                {
+                    hero->ChangerRole();
+                }
+                else if (decision == 2)
+                {
+                    compagnon->ChangerRole();
+                }
+                else
+                {
+                    cout << "Choix invalide" << endl;
+                }
             }
             else if (binaire == "Non" or binaire == "non")
             {
@@ -201,9 +221,24 @@ int main()
             cout << "Oui" << endl;
             cout << "Non" << endl;
             cin >> binaire;
-
             if (binaire == "Oui" or binaire == "oui")
             {
+                cout << "Que choisis tu :" << endl;
+                cout << "1. Hero" << endl;
+                cout << "2. Compagnon" << endl;
+                cin >> decision;
+                if (decision == 1)
+                {
+                    hero->ChangerRole();
+                }
+                else if (decision == 2)
+                {
+                    compagnon->ChangerRole();
+                }
+                else
+                {
+                    cout << "Choix invalide" << endl;
+                }
             }
 
             else if (binaire == "Non" or binaire == "non")

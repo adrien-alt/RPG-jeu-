@@ -12,6 +12,7 @@ private:
     int vie;
     int attaque;
     int capacite;
+    int role;
 
 public:
     Personnage();
@@ -21,11 +22,13 @@ public:
     int RecevoirDegats(int degats);
     int RecupAttaque();
     int RecupPointVie();
+    int ChangerRole();
 
     void setAttaque(int valeur);
     void setPointVie(int valeur);
     void setCapacite(int valeur);
     void setNom(string valeur);
+    void setRole(int role);
 
     string RecupNom();
 };
