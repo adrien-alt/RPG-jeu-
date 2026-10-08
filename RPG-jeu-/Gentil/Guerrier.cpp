@@ -6,7 +6,7 @@ Guerrier::Guerrier()
 {
     setAttaque(25);
     setPointVie(150);
-    setCapacite(300);
+    setCapacite(50);
     setNom("Guerrier");
 }
 Guerrier::~Guerrier()

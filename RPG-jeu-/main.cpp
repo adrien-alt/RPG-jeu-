@@ -8,6 +8,7 @@
 #include "Mechant/Dragon.h"
 #include "Mechant/Gobelin.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -20,9 +21,10 @@ int main()
     int decision;
     int degatJoueur;
     int degatEnnemi;
+    string binaire;
 
-    cout << "Création du Héro" << endl;
-    cout << "Vie du Héro:" << hero->RecupPointVie() << endl;
+    std::cout << "Création du Héro" << endl;
+    std::cout << "Vie du Héro:" << hero->RecupPointVie() << endl;
     cout << "Attaque du Héro: " << hero->RecupAttaque() << endl;
     cout << "Capacite du Hero: " << hero->Capacite() << endl;
     cout << "Choisissez votre 1er compagnon: " << endl;
@@ -63,64 +65,156 @@ int main()
     cout << "====================================" << endl;
     cout << "Qui doit commencer ?" << endl;
     cout << "1. Le hero" << endl;
-    cout << "2. Le compagnon: " << compagnon->RecupNom()<< endl;
+    cout << "2. Le compagnon: " << compagnon->RecupNom() << endl;
     cout << "====================================" << endl;
     cin >> decision;
-    while (true)
+    if (decision == 1)
     {
-        cout << endl;
-        cout << "====================================" << endl;
-        cout << "1. Attaquer" << endl;
-        cout << "2. Capacite" << endl;
-        cout << "3. Fuir" << endl;
-        cout << "=====================================" << endl;
-        cin >> decision;
-        if (decision == 1)
+        while (true)
         {
-            // Attaque
-            degatJoueur = hero->Attaquer();
-            ennemi->RecevoirDegats(degatJoueur);
-
-            if (ennemi->RecupPointVie() <= 0)
+            cout << endl;
+            cout << "====================================" << endl;
+            cout << "1. Attaquer" << endl;
+            cout << "2. Capacite" << endl;
+            cout << "3. Fuir" << endl;
+            cout << "=====================================" << endl;
+            cin >> decision;
+            if (decision == 1)
             {
-                cout << "L'ennemi est mort" << endl;
+                // Attaque
+                degatJoueur = hero->Attaquer();
+                ennemi->RecevoirDegats(degatJoueur);
+
+                if (ennemi->RecupPointVie() <= 0)
+                {
+                    cout << "L'ennemi est mort" << endl;
+                    break;
+                }
+                cout << "L'ennemi possède maintenant: " << ennemi->RecupPointVie() << "pv" << endl;
             }
-            cout << "L'ennemi possède maintenant: " << ennemi->RecupPointVie() << "pv" << endl;
+            else if (decision == 2)
+            {
+                // Capacité
+                degatJoueur = hero->Capacite();
+                cout << "Capacité utilisé!" << endl;
+                ennemi->RecevoirDegats(degatJoueur);
+                if (ennemi->RecupPointVie() <= 0)
+                {
+                    cout << "L'ennemi est mort" << endl;
+                    break;
+                }
+                else
+                {
+                    degatEnnemi = ennemi->Attaquer();
+                    hero->RecevoirDegats(degatEnnemi);
+                }
+                cout << "L'ennemi possède maintenant: " << ennemi->RecupPointVie() << "pv" << endl;
+            }
+            else if (decision == 3)
+            {
+                cout << "Tu fuis" << endl;
+                break;
+            }
+            cout << "Vous avez maintenant: " << compagnon->RecupPointVie() << "pv" << endl;
+            cout << "Voulez-vous changez de personnage:" << endl;
+            cout << "Oui" << endl;
+            cout << "Non" << endl;
+            cin >> binaire;
+            if (binaire == "Oui" or binaire == "oui")
+            {
+            }
+            else if (binaire == "Non" or binaire == "non")
+            {
+                cout << "Retour avec le personnage " << endl;
+            }
+            else
+            {
+                cout << "Choix invalide" << endl;
+            }
+        }
+    }
+    else if (decision == 2)
+    {
+        while (true)
+        {
+            cout << endl;
+            cout << "====================================" << endl;
+            cout << "1. Attaquer" << endl;
+            cout << "2. Capacite" << endl;
+            cout << "3. Fuir" << endl;
+            cout << "=====================================" << endl;
+            cin >> decision;
 
-            // ennemi attaque
+            if (decision == 1)
+            {
+                // Attaque
+                degatJoueur = compagnon->Attaquer();
+                ennemi->RecevoirDegats(degatJoueur);
+
+                if (ennemi->RecupPointVie() <= 0)
+                {
+                    cout << "L'ennemi est mort" << endl;
+                }
+                cout << "L'ennemi possède maintenant: " << ennemi->RecupPointVie() << "pv" << endl;
+            }
+
+            else if (decision == 2)
+            {
+                // Capacité
+                degatJoueur = compagnon->Capacite();
+                cout << "Capacité utilisé!" << endl;
+                ennemi->RecevoirDegats(degatJoueur);
+                if (ennemi->RecupPointVie() == 0)
+                {
+                    cout << "L'ennemi est mort" << endl;
+                    break;
+                }
+                else
+                {
+                    degatEnnemi = ennemi->Attaquer();
+                    compagnon->RecevoirDegats(degatEnnemi);
+                }
+                cout << "L'ennemi possède maintenant: " << ennemi->RecupPointVie() << "pv" << endl;
+                cout << "Le compagnon a : " << compagnon->RecupPointVie() << "pv" << endl;
+            }
+
+            else if (decision == 3)
+            {
+                cout << "Tu fuis" << endl;
+                break;
+            }
+            else
+            {
+                cout << "Choix invalide" << endl;
+            }
+
             degatEnnemi = ennemi->Attaquer();
-            hero->RecevoirDegats(degatEnnemi);
-
-            if (hero->RecupPointVie() <= 0)
+            compagnon->RecevoirDegats(degatEnnemi);
+            if (compagnon->RecupPointVie() <= 0)
             {
                 cout << "Vous êtes mort" << endl;
                 break;
             }
-            cout << "Vous avez maintenant: " << hero->RecupPointVie() << "pv" << endl;
-        }
-        else if (decision == 2)
-        {
-            // Capacité
-            degatJoueur = hero->Capacite();
-            cout << "Capacité utilisé!" << endl;
-            ennemi->RecevoirDegats(degatJoueur);
-            if (ennemi->RecupPointVie() <= 0)
-            {
-                cout << "L'ennemi est mort" << endl;
-                break;
-            }
-            cout << "L'ennemi possède maintenant: " << ennemi->RecupPointVie() << "pv" << endl;
-        }
-        else if (decision == 3)
-        {
-            cout << "Tu fuis" << endl;
-            break;
-        }
-        else
-        {
-            cout << "Choix invalide" << endl;
-        }
-            //compagnon
 
+            cout << "Vous avez maintenant: " << compagnon->RecupPointVie() << "pv" << endl;
+            cout << "Voulez-vous changez de personnage:" << endl;
+            cout << "Oui" << endl;
+            cout << "Non" << endl;
+            cin >> binaire;
+
+            if (binaire == "Oui" or binaire == "oui")
+            {
+            }
+
+            else if (binaire == "Non" or binaire == "non")
+            {
+                cout << "Retour avec le personnage " << endl;
+            }
+
+            else
+            {
+                cout << "Choix invalide" << endl;
+            }
+        }
     }
 }
