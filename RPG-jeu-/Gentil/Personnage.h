@@ -10,6 +10,7 @@ class Personnage
 private:
     string nom;
     int vie;
+    int vieMax;
     int attaque;
     int capacite;
     int role;
@@ -23,12 +24,17 @@ public:
     int RecupAttaque();
     int RecupPointVie();
     int ChangerRole();
+    int RecupPointVieMax();
+    int RecevoirDegatPotion();
 
     void setAttaque(int valeur);
     void setPointVie(int valeur);
+    void setPointVieMax(int valeur);
     void setCapacite(int valeur);
     void setNom(string valeur);
     void setRole(int role);
+    void seSoigner(int soin);
+    void degatPotion(int blessure);
 
     string RecupNom();
 };

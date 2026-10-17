@@ -5,6 +5,7 @@ using namespace std;
 Personnage::Personnage()
 {
     vie = 100;
+    vieMax =100;
     attaque = 20;
 }
 Personnage::~Personnage()
@@ -47,6 +48,14 @@ void Personnage::setPointVie(int valeur)
 {
     vie = valeur;
 }
+void Personnage::setPointVieMax(int valeur)
+{
+    vieMax = valeur;
+}
+int Personnage::RecupPointVieMax()
+{
+    return vieMax;
+}
 string Personnage::RecupNom()
 {
     return nom;
@@ -62,4 +71,20 @@ int Personnage::ChangerRole()
 void Personnage::setRole(int valeur)
 {
     role = valeur;
+}
+void Personnage::seSoigner(int soin)
+{
+    vie = vie +soin;
+    if(vie > vieMax)
+    {
+        vie = vieMax;
+    }
+}
+void Personnage::degatPotion(int blessure)
+{
+    vie= vie -blessure;
+    if(vie < 0)
+    {
+        vie = 0;
+    }
 }

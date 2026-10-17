@@ -6,6 +6,7 @@ Hero::Hero()
 {
     setAttaque(20);
     setPointVie(100);
+    setPointVieMax(100);
     setCapacite(50);
 }
 Hero::~Hero()

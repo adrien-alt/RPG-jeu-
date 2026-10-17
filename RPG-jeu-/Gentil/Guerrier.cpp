@@ -6,6 +6,7 @@ Guerrier::Guerrier()
 {
     setAttaque(25);
     setPointVie(150);
+    setPointVieMax(150);
     setCapacite(50);
     setNom("Guerrier");
 }

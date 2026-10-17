@@ -6,6 +6,7 @@ Mage::Mage()
 {
     setAttaque(15);
     setPointVie(110);
+    setPointVieMax(110);
     setMana(200);
     setCapacite(150);
     setNom("Mage");
