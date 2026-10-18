@@ -202,31 +202,40 @@ int main()
         cin>>inventaire;
         if (inventaire == "oui" || inventaire == "Oui")
         {
-            cout<<"que prenez-vous"<<endl;
-            cout << "1. potion de vie" << endl;
-            cout << "2. potion d'attaque" << endl;
+            cout << "Que prenez-vous ?" << endl;
+            cout << "1. Potion de vie : " << potionVie.recupererQuantiteVie() << endl;
+            cout << "2. Potion d'attaque : " << potionAttaque.recupererQuantiteAttaque() << endl;
             cin >> choix;
-            if (choix == 1 && actif->RecupPointVie() > 0)
+        
+            if (choix == 1)
             {
-                potionVie.PotionVie(*actif);
-            }
-            else if(choix == 2)
-            
-            {
-                potionAttaque.PotionAttaque(*ennemi);
-                if (ennemi->RecupPointVie() <= 0)
+                if (potionVie.recupererQuantiteVie() > 0 && actif->RecupPointVie() > 0)
                 {
-                    cout << "L'ennemi est mort !" << endl;
-                    break;
+                    potionVie.PotionVie(*actif);
+                    potionVie.quantiteRestantVie();
+                    cout << "Potions de vie restantes : " << potionVie.recupererQuantiteVie() << endl;
+                }
+                else
+                {
+                    cout << "Tu n'as plus de potions de vie !" << endl;
                 }
             }
-            else if (inventaire != "non" && inventaire != "Non")
+            else if (choix == 2)
             {
-                cout << "Reponse invalide." << endl;
+                if (potionAttaque.recupererQuantiteAttaque() > 0)
+                {
+                    potionAttaque.PotionAttaque(*actif);
+                    potionAttaque.quantiteRestantAttaque();
+                    cout << "Potions d'attaque restantes : " << potionAttaque.recupererQuantiteAttaque() << endl;
+                }
+                else
+                {
+                    cout << "Tu n'as plus de potions d'attaque !" << endl;
+                }
             }
             else
             {
-                cout << "Choix invalide ou personnage KO." << endl;
+                cout << "Choix invalide !" << endl;
             }
         }
         // Proposer de changer de personnage

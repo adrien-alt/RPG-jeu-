@@ -22,3 +22,25 @@ void Objet::PotionAttaque(Personnage& personnage)
 {
     personnage.degatPotion(potionAttaque);
 }
+void Objet::quantiteRestantVie()
+{
+    if (quantiteDePotionVie > 0)
+    {
+        quantiteDePotionVie = quantiteDePotionVie - 1;
+    }
+}
+void Objet::quantiteRestantAttaque()
+{
+    if(quantiteDePotionAttaque > 0)
+    {
+        quantiteDePotionAttaque = quantiteDePotionAttaque - 1;
+    }
+}
+int Objet::recupererQuantiteAttaque()
+{
+    return quantiteDePotionAttaque;
+}
+int Objet::recupererQuantiteVie()
+{
+    return quantiteDePotionVie;
+}
