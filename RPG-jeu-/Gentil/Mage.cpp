@@ -9,6 +9,7 @@ Mage::Mage()
     setPointVieMax(110);
     setMana(200);
     setCapacite(150);
+    setProtection(25);
     setNom("Mage");
 }
 Mage::~Mage()

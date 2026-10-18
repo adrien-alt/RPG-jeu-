@@ -35,6 +35,7 @@ int main()
     cout << "Vie du Hero : " << hero->RecupPointVie() << endl;
     cout << "Attaque du Hero : " << hero->RecupAttaque() << endl;
     cout << "Capacite du Hero : " << hero->Capacite() << endl;
+    cout << "Bouclier du Hero: " << hero ->Protection()<<endl;
 
     cout << "Choisissez votre premier compagnon :" << endl;
     cout << "1. Guerrier" << endl;
@@ -69,6 +70,7 @@ int main()
 
     cout << "Vie : " << compagnon->RecupPointVie() << endl;
     cout << "Attaque : " << compagnon->RecupAttaque() << endl;
+    cout << "Protection: "<< compagnon-> Protection()<<endl;
     cout << "====================================" << endl;
 
     cout << "Un ennemi apparait !" << endl;
@@ -170,22 +172,19 @@ int main()
         degatEnnemi = ennemi->Attaquer();
         actif->RecevoirDegats(degatEnnemi);
 
-        cout << actif->RecupNom() << " a maintenant "
-             << actif->RecupPointVie() << " PV." << endl;
+        cout << actif->RecupNom() << " a maintenant "<< actif->RecupPointVie() << " PV." << endl;
 
         // Verifier si le personnage actif est KO
         if (actif->RecupPointVie() <= 0)
         {
             cout << actif->RecupNom() << " est KO !" << endl;
 
-            if (personnageActuel == 1 &&
-                compagnon->RecupPointVie() > 0)
+            if (personnageActuel == 1 && compagnon->RecupPointVie() > 0)
             {
                 personnageActuel = 2;
                 cout << "Le compagnon prend le relais !" << endl;
             }
-            else if (personnageActuel == 2 &&
-                     hero->RecupPointVie() > 0)
+            else if (personnageActuel == 2 && hero->RecupPointVie() > 0)
             {
                 personnageActuel = 1;
                 cout << "Le Hero prend le relais !" << endl;
@@ -224,8 +223,15 @@ int main()
             {
                 if (potionAttaque.recupererQuantiteAttaque() > 0)
                 {
-                    potionAttaque.PotionAttaque(*actif);
+                    potionAttaque.PotionAttaque(*ennemi);
                     potionAttaque.quantiteRestantAttaque();
+                    if (ennemi->RecupPointVie() <= 0)
+                    {
+                        cout << "L'ennemi est mort !" << endl;
+                        break;
+                    }
+                
+                    cout << "PV de l'ennemi : "<< ennemi->RecupPointVie() << endl;
                     cout << "Potions d'attaque restantes : " << potionAttaque.recupererQuantiteAttaque() << endl;
                 }
                 else

@@ -8,6 +8,7 @@ Archer::Archer()
     setPointVie(100);
     setPointVieMax(100);
     setCapacite(175);
+    setProtection(30);
     setNom("Archer");
 }
 Archer::~Archer()

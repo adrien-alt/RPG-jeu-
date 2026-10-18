@@ -8,6 +8,7 @@ Hero::Hero()
     setPointVie(100);
     setPointVieMax(100);
     setCapacite(50);
+    setProtection(25);
 }
 Hero::~Hero()
 {

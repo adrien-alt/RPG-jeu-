@@ -14,6 +14,7 @@ private:
     int attaque;
     int capacite;
     int role;
+    int bouclier;
 
 public:
     Personnage();
@@ -25,7 +26,7 @@ public:
     int RecupPointVie();
     int ChangerRole();
     int RecupPointVieMax();
-    int RecevoirDegatPotion();
+    int Protection();
 
     void setAttaque(int valeur);
     void setPointVie(int valeur);
@@ -33,6 +34,7 @@ public:
     void setCapacite(int valeur);
     void setNom(string valeur);
     void setRole(int role);
+    void setProtection(int valeur);
     void seSoigner(int soin);
     void degatPotion(int blessure);
 

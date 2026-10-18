@@ -7,6 +7,7 @@ Personnage::Personnage()
     vie = 100;
     vieMax =100;
     attaque = 20;
+    bouclier = 30;
 }
 Personnage::~Personnage()
 {
@@ -17,12 +18,22 @@ int Personnage::Attaquer()
 }
 int Personnage::RecevoirDegats(int degats)
 {
-    vie = vie - degats;
-    if (vie < 0)
+    bouclier  = bouclier - degats;
+    if (bouclier < 0)
     {
-        vie = 0;
+        int degatsRestants = 0 - bouclier;
+        bouclier = 0;
+        vie = vie - degatsRestants;
+        if (vie < 0)
+        {
+            vie = 0;
+        }
+        return vie;
     }
-    return vie;
+    else
+    {
+        return vie;
+    }
 }
 int Personnage::RecupAttaque()
 {
@@ -87,4 +98,12 @@ void Personnage::degatPotion(int blessure)
     {
         vie = 0;
     }
+}
+void Personnage::setProtection(int valeur)
+{
+    bouclier = valeur;
+}
+int Personnage:: Protection()
+{
+    return bouclier;
 }
