@@ -8,15 +8,12 @@ using namespace std;
 class Gobelin : public Ennemi
 {
 private:
-    int capacite;
 public:
     Gobelin();
     ~Gobelin();
 
-    int Capacite();
-    
-    void setPouvoir(int pouvoir);
+    void jouerTour(Personnage*cible) override;
 
 };
 
-#endif
+#endif;

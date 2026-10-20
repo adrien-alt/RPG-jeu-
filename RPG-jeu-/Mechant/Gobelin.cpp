@@ -5,16 +5,14 @@ using namespace std;
 Gobelin::Gobelin()
 {
     setAttaque(15);
-    setPointVie(110);
+    setPointVie(50);
+    setProtection(0);
 }
 Gobelin::~Gobelin()
 {
 }
-int Gobelin::Capacite()
+void Gobelin::jouerTour(Personnage*cible)
 {
-    return capacite;
-}
-void Gobelin::setPouvoir(int pouvoir)
-{
-    capacite = pouvoir;
+    int degats = Attaquer();
+    cible->RecevoirDegats(degats);
 }

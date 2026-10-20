@@ -16,6 +16,7 @@ public:
     int Capacite();
     
     void setPouvoir(int pouvoir);
+    void jouerTour(Personnage*cible) override;
 
 };
 

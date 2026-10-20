@@ -8,6 +8,7 @@
 #include "Mechant/Ennemi.h"
 #include "Mechant/Dragon.h"
 #include "Mechant/Gobelin.h"
+#include "Mechant/Orc.h"
 
 #include <iostream>
 #include <string>
@@ -169,8 +170,7 @@ int main()
              << ennemi->RecupPointVie() << endl;
 
         // L'ennemi attaque 
-        degatEnnemi = ennemi->Attaquer();
-        actif->RecevoirDegats(degatEnnemi);
+        ennemi->jouerTour(actif);
 
         cout << actif->RecupNom() << " a maintenant "<< actif->RecupPointVie() << " PV." << endl;
 
