@@ -1,25 +1,27 @@
+
 #ifndef DRAGON_H
 #define DRAGON_H
 
-#include <string>
 #include "Ennemi.h"
-using namespace std;
 
 class Dragon : public Ennemi
 {
 private:
     int capacite;
     int mana;
+    int potionVie;
+    int quantitePotionVie;
+
 public:
     Dragon();
-    ~Dragon();
+    ~Dragon() override;
 
     int Capacite();
     int Mana();
-    
+
     void setPouvoir(int pouvoir);
     void setMana(int power);
 
+    void jouerTour(Personnage* cible) override;
 };
-
 #endif

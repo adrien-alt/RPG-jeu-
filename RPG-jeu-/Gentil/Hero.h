@@ -8,9 +8,13 @@ using namespace std;
 class Hero : public Personnage
 {
 private:
+    int niveau;
+    int experienceActuelle;
+    int experienceMax; 
 public:
     Hero();
     ~Hero();
+
 };
 
 #endif

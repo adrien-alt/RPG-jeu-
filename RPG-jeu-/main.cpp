@@ -19,7 +19,7 @@ int main()
 {
     Personnage *compagnon = nullptr;
     Hero *hero = new Hero();
-    Ennemi *ennemi = new Ennemi();
+    Ennemi *ennemi = nullptr;
     Objet potionVie;
     Objet potionAttaque;
     int choix;
@@ -66,12 +66,41 @@ int main()
         delete ennemi;
         return 1;
     }
-
-    compagnon->setRole(2);
-
     cout << "Vie : " << compagnon->RecupPointVie() << endl;
     cout << "Attaque : " << compagnon->RecupAttaque() << endl;
     cout << "Protection: "<< compagnon-> Protection()<<endl;
+    cout << "====================================" << endl;
+    compagnon->setRole(2);
+    cout << "Choisit un ennemi: "<<endl;
+    cout<<"1. Gobelin"<<endl;
+    cout<<"2. Orc"<<endl;
+    cout<<"3. Dragon"<<endl;
+    cin >> choix;
+    if(choix == 1)
+    {
+        ennemi = new Gobelin();
+        cout<<"Tu as choisit comme ennemie: Gobelin"<<endl;
+    }
+    else if(choix == 2)
+    {
+        ennemi = new Orc();
+        cout<<"Tu as choisit comme ennemie: Orc"<<endl;
+    }
+    else if(choix == 3)
+    {
+        ennemi = new Dragon();
+        cout<<"Tu as choisit comme ennemi: Dragon"<<endl;
+    }
+    else 
+    {
+        cout<<"Choix invalide"<<endl;
+        delete hero;
+        delete compagnon;
+        return 1;
+    }
+    cout << "Vie : " << ennemi->RecupPointVie() << endl;
+    cout << "Attaque : " << ennemi->RecupAttaque() << endl;
+    cout << "Protection: "<< ennemi-> Protection()<<endl;
     cout << "====================================" << endl;
 
     cout << "Un ennemi apparait !" << endl;
@@ -172,7 +201,7 @@ int main()
         // L'ennemi attaque 
         ennemi->jouerTour(actif);
 
-        cout << actif->RecupNom() << " a maintenant "<< actif->RecupPointVie() << " PV." << endl;
+        cout << actif->RecupNom() << " Le hero a maintenant "<< actif->RecupPointVie() << " PV." << endl;
 
         // Verifier si le personnage actif est KO
         if (actif->RecupPointVie() <= 0)
