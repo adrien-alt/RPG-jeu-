@@ -4,14 +4,12 @@ using namespace std;
 
 Hero::Hero()
 {
-    setAttaque(200);
+    setAttaque(50);
     setPointVie(1000);
-    setPointVieMax(100);
+    setPointVieMax(1000);
     setCapacite(50);
     setProtection(25);
-    niveau = 1;
-    experienceActuelle = 0;
-    experienceMax = 100;
+
 }
 Hero::~Hero()
 {

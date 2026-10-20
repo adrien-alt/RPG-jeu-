@@ -15,6 +15,9 @@ private:
     int capacite;
     int role;
     int bouclier;
+    int niveau;
+    int experienceActuelle;
+    int experienceMax;
 
 public:
     Personnage();
@@ -37,6 +40,9 @@ public:
     void setProtection(int valeur);
     void seSoigner(int soin);
     void degatPotion(int blessure);
+    void gagnerExeperience(int quantite);
+    void augmenterDegats(int valeur);
+    void augmenterProtection(int valeur);
 
     string RecupNom();
 };

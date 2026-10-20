@@ -8,6 +8,7 @@ Orc::Orc()
     setPointVie(110);
     setPouvoir(50);
     setProtection(60);
+    setCapacite(70);
 }
 Orc::~Orc()
 {

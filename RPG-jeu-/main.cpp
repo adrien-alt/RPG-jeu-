@@ -192,11 +192,12 @@ int main()
         if (ennemi->RecupPointVie() <= 0)
         {
             cout << "L'ennemi est mort !" << endl;
+            actif->gagnerExeperience(50);
+            cout<<"Tu as gagner 50 xp"<<endl;
             break;
         }
 
-        cout << "PV de l'ennemi : "
-             << ennemi->RecupPointVie() << endl;
+        cout << "PV de l'ennemi : "<< ennemi->RecupPointVie() << endl;
 
         // L'ennemi attaque 
         ennemi->jouerTour(actif);

@@ -8,6 +8,9 @@ Personnage::Personnage()
     vieMax =100;
     attaque = 20;
     bouclier = 30;
+    niveau = 1;
+    experienceActuelle = 0;
+    experienceMax = 100;
 }
 Personnage::~Personnage()
 {
@@ -106,4 +109,27 @@ void Personnage::setProtection(int valeur)
 int Personnage:: Protection()
 {
     return bouclier;
+}
+void Personnage::gagnerExeperience(int quantite)
+{
+    experienceActuelle = experienceActuelle + quantite;
+
+    while (experienceActuelle >= experienceMax && niveau < 100)
+    {
+
+        experienceActuelle = experienceActuelle - experienceMax;
+
+        niveau++;
+        augmenterDegats(50);
+        augmenterProtection(50);
+        experienceMax = experienceMax + 300;
+    }
+}
+void Personnage::augmenterDegats(int valeur)
+{
+    attaque+= valeur;
+}
+void Personnage::augmenterProtection(int valeur)
+{
+    bouclier += valeur;
 }
