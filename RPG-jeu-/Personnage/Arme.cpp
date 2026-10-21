@@ -16,6 +16,8 @@ Arme::~Arme()
 {
 
 }
+
+//retour des attaques d'armes
 int Arme::getDegatEpee()
 {
     return degatEpee;
@@ -32,6 +34,7 @@ int Arme::getDegatMassue()
 {
     return degatMassue;
 }
+//choix de l'arme
 int Arme::degatArme(Personnage*degat, int choix)
 {
     int degatTotaux;

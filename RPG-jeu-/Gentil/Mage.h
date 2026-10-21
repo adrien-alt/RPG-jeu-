@@ -1,8 +1,8 @@
 #ifndef MAGE_H
-#define MAHE_H
+#define MAGE_H
 
 #include <string>
-#include "Personnage.h"
+#include "../Personnage/Personnage.h"
 using namespace std;
 
 class Mage : public Personnage

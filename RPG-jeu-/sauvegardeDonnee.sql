@@ -18,7 +18,7 @@ CREATE TABLE arme (
     personnagePortantArme INT
 );
 
-CREATE TABLE equipement (
+CREATE TABLE armure (
     idEquipement INT AUTO_INCREMENT PRIMARY KEY,
     nomEquipement VARCHAR(50),
     valeurEquipement INT,

@@ -1,6 +1,6 @@
 #ifndef ARME_H
 #define ARME_H
-#include "Personnage.h"
+#include "../Personnage/Personnage.h"
 #include <string>
 using namespace std;
 

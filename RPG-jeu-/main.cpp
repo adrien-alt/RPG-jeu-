@@ -1,11 +1,14 @@
 
-#include "Gentil/Personnage.h"
 #include "Gentil/Hero.h"
 #include "Gentil/Guerrier.h"
 #include "Gentil/Mage.h"
 #include "Gentil/Archer.h"
-#include "Gentil/objet.h"
-#include "Gentil/Arme.h"
+
+#include "Personnage/objet.h"
+#include "Personnage/Arme.h"
+#include "Personnage/Armure.h"
+#include "Personnage/Inventaire.h"
+#include "Personnage/Personnage.h"
 
 #include "Mechant/Ennemi.h"
 #include "Mechant/Dragon.h"
@@ -26,16 +29,27 @@ int main()
     Objet potionVie;
     Objet potionAttaque;
     Arme arme;
+    Armure armure;
+    Inventaire inventaire;
+    int protectionTotaux = 0;
     int degatTotaux = 0; 
     int choix;
     int decision;
     int degatJoueur = 0;
-    int degatEnnemi;
     int personnageActuel = 1;
     string binaire;
-    string inventaire;
+    string reponseInventaire;
 
     hero->setRole(1);
+    //test inventaire
+    inventaire.afficherInventaire();
+
+    inventaire.ajouterObjet(potionAttaque);
+    inventaire.afficherInventaire();
+
+    inventaire.retirerObjet(0);
+    inventaire.afficherInventaire();
+    //choix du compagnon
     cout << "Creation du Hero" << endl;
     cout << "Vie du Hero : " << hero->RecupPointVie() << endl;
     cout << "Attaque du Hero : " << hero->RecupAttaque() << endl;
@@ -67,6 +81,8 @@ int main()
         delete hero;
         return 1;
     }
+
+    //choix de l'ennmie
     cout << "Vie : " << compagnon->RecupPointVie() << endl;
     cout << "Attaque : " << compagnon->RecupAttaque() << endl;
     cout << "Protection: " << compagnon->Protection() << endl;
@@ -99,6 +115,7 @@ int main()
         delete compagnon;
         return 1;
     }
+    //choix de combatre ou de fuir
     cout << "Vie : " << ennemi->RecupPointVie() << endl;
     cout << "Attaque : " << ennemi->RecupAttaque() << endl;
     cout << "Protection: " << ennemi->Protection() << endl;
@@ -123,12 +140,11 @@ int main()
         delete ennemi;
         return 1;
     }
+    //choix du commencement entre le hero et le compagnon
     cout << "Qui doit commencer ?" << endl;
     cout << "1. Le Hero" << endl;
     cout << "2. Le compagnon : " << compagnon->RecupNom() << endl;
     cin >> choix;
-    // CORRECTION : on choisit seulement le personnage ici.
-    // Le menu des armes est déplacé dans le tour d'attaque.
     if (choix == 1 || choix == 2)
     {
         personnageActuel = choix;
@@ -140,7 +156,6 @@ int main()
     }
     while (ennemi->RecupPointVie() > 0)
     {
-        // Choisir le personnage actif
         if (personnageActuel == 1)
         {
             actif = hero;
@@ -150,6 +165,7 @@ int main()
             actif = compagnon;
         }
         cout << endl;
+        //choix entre attaquer, capacite et fuite
         cout << "====================================" << endl;
         cout << "Personnage actif : " << actif->RecupNom() << endl;
         cout << "PV du Hero : " << hero->RecupPointVie() << endl;
@@ -162,7 +178,7 @@ int main()
 
         if (decision == 1)
         {
-            // CORRECTION : choix de l'arme à chaque attaque
+            //choix des armes
             cout << "Choisissez une arme :" << endl;
             cout << "1. Epee" << endl;
             cout << "2. Arc" << endl;
@@ -176,26 +192,78 @@ int main()
                 continue;
             }
             if (choix == 1)
+            {
                 cout << "Tu as choisi l'epee" << endl;
+            }
             else if (choix == 2)
+            {
                 cout << "Tu as choisi l'arc" << endl;
+            }
             else if (choix == 3)
+            {
                 cout << "Tu as choisi la massue" << endl;
+            }
             else
+            {
                 cout << "Tu as choisi la dague" << endl;
+            }
 
-            // CORRECTION : actif est défini avant cet appel
             degatTotaux = arme.degatArme(actif, choix);
-            // CORRECTION : vérifier le résultat avant de l'utiliser
             if (degatTotaux < 0)
             {
                 cout << "Impossible de calculer les degats." << endl;
                 continue;
             }
-            // CORRECTION : ne pas écraser les dégâts avec Attaquer()
-        degatJoueur = degatTotaux;
-        ennemi->RecevoirDegats(degatJoueur);
-        }
+                if (decision == 1)
+                {
+                    //choix de la pièce d'armures
+                    cout << "Choisissez une partie de l'armure :" << endl;
+                    cout << "1. Plastron" << endl;
+                    cout << "2. Jambière" << endl;
+                    cout << "3. Casque" << endl;
+                    cout << "4. Bras" << endl;
+                    cout << "5. Armure au complet"<<endl;
+                    cin >> choix;
+
+                    if (choix < 1 || choix > 5)
+                    {
+                        cout << "Choix d'armure invalide !" << endl;
+                        continue;
+                    }
+                    if (choix == 1)
+                    {
+                        cout << "Tu as choisi le plastron" << endl;
+                    }
+                    else if (choix == 2)
+                    {
+                        cout << "Tu as choisi les jambières" << endl;
+                    }
+                    else if (choix == 3)
+                    {
+                        cout << "Tu as choisi le casque" << endl;
+                    }
+                    else if(choix == 4)
+                    {
+                        cout << "Tu as choisi les bars" << endl;
+                        protectionTotaux = armure.protectionArmure(actif, choix);
+                    }
+                    else if(choix == 5)
+                    {
+                        cout<<"Tu as une armure au complet"<<endl;
+                        protectionTotaux = armure.protectionArmure(actif, choix);
+                    }
+                    else if (protectionTotaux < 0)
+                    {
+                        cout << "Impossible de calculer les degats." << endl;
+                        continue;
+                    }
+                    cout<<"Total de l'armure: "<<protectionTotaux<<endl;
+                }
+                //attaque sur ennemi
+            degatJoueur = degatTotaux;
+            //ennemi recoit degat
+            ennemi->RecevoirDegats(degatJoueur);
+            }
         else if (decision == 2)
         {
             degatJoueur = actif->Capacite();
@@ -212,7 +280,7 @@ int main()
             cout << "Choix invalide." << endl;
             continue;
         }
-        // Vérifier si l'ennemi est mort
+        // Vérifier si l'ennemi est mort//
         if (ennemi->RecupPointVie() <= 0)
         {
             cout << "L'ennemi est mort !" << endl;
@@ -221,11 +289,11 @@ int main()
             break;
         }
         cout << "PV de l'ennemi : " << ennemi->RecupPointVie() << endl;
-        // L'ennemi attaque
+        // L'ennemi attaque//
         ennemi->jouerTour(actif);
         cout << actif->RecupNom()<< " a maintenant " << actif->RecupPointVie()<< " PV." << endl;
 
-        // Vérifier si le personnage actif est KO
+        // Vérifier si le personnage actif est KO//
         if (actif->RecupPointVie() <= 0)
         {
             cout << actif->RecupNom() << " est KO !" << endl;
@@ -248,9 +316,9 @@ int main()
         }
         // Proposition de l'inventaire
         cout << "Voulez-vous utiliser un objet dans l'inventaire ? (oui/non)" << endl;
-        cin >> inventaire;
+        cin >> reponseInventaire;
 
-        if (inventaire == "oui" || inventaire == "Oui")
+        if (reponseInventaire == "oui" || reponseInventaire == "Oui")
         {
             cout << "Que prenez-vous ?" << endl;
             cout << "1. Potion de vie : "<< potionVie.recupererQuantiteVie() << endl;

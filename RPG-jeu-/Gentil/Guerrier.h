@@ -2,7 +2,7 @@
 #define GUERRIER_H
 
 #include <string>
-#include "Personnage.h"
+#include "../Personnage/Personnage.h"
 using namespace std;
 
 class Guerrier : public Personnage

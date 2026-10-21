@@ -15,10 +15,21 @@ Personnage::Personnage()
 Personnage::~Personnage()
 {
 }
+
+//attaque 
 int Personnage::Attaquer()
 {
     return attaque;
 }
+int Personnage::RecupAttaque()
+{
+    return attaque;
+}
+void Personnage::setAttaque(int valeur)
+{
+    attaque = valeur;
+}
+
 int Personnage::RecevoirDegats(int degats)
 {
     bouclier  = bouclier - degats;
@@ -38,18 +49,8 @@ int Personnage::RecevoirDegats(int degats)
         return vie;
     }
 }
-int Personnage::RecupAttaque()
-{
-    return attaque;
-}
-int Personnage::RecupPointVie()
-{
-    return vie;
-}
-void Personnage::setAttaque(int valeur)
-{
-    attaque = valeur;
-}
+
+//capacite du personnage
 int Personnage::Capacite()
 {
     return capacite;
@@ -58,6 +59,8 @@ void Personnage::setCapacite(int valeur)
 {
     capacite = valeur;
 }
+
+//vie max du joueur
 void Personnage::setPointVie(int valeur)
 {
     vie = valeur;
@@ -70,6 +73,12 @@ int Personnage::RecupPointVieMax()
 {
     return vieMax;
 }
+int Personnage::RecupPointVie()
+{
+    return vie;
+}
+
+//nom du perso
 string Personnage::RecupNom()
 {
     return nom;
@@ -78,6 +87,8 @@ void Personnage::setNom(string valeur)
 {
     nom = valeur;
 }
+
+//role personnage
 int Personnage::ChangerRole()
 {
     return role;
@@ -86,6 +97,8 @@ void Personnage::setRole(int valeur)
 {
     role = valeur;
 }
+
+//potion vie
 void Personnage::seSoigner(int soin)
 {
     vie = vie +soin;
@@ -94,6 +107,8 @@ void Personnage::seSoigner(int soin)
         vie = vieMax;
     }
 }
+
+//potion degat
 void Personnage::degatPotion(int blessure)
 {
     vie= vie -blessure;
@@ -102,6 +117,8 @@ void Personnage::degatPotion(int blessure)
         vie = 0;
     }
 }
+
+//protection
 void Personnage::setProtection(int valeur)
 {
     bouclier = valeur;
@@ -110,6 +127,8 @@ int Personnage:: Protection()
 {
     return bouclier;
 }
+
+//gagner xp
 void Personnage::gagnerExeperience(int quantite)
 {
     experienceActuelle = experienceActuelle + quantite;
