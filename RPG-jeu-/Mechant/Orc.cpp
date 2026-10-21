@@ -21,17 +21,20 @@ void Orc::setPouvoir(int pouvoir)
 {
     capacite = pouvoir;
 }
-void Orc::jouerTour(Personnage*cible)
+
+void Orc::jouerTour(Personnage* cible)
 {
     int degats;
-    if(cible->RecevoirDegats(degats) < 75)
+
+    if (cible->RecupPointVie() < 75)
     {
         degats = Capacite();
-        cible->RecevoirDegats(degats);
     }
     else
     {
         degats = Attaquer();
-        cible->RecevoirDegats(degats);
     }
+
+    cible->RecevoirDegats(degats);
 }
+    
