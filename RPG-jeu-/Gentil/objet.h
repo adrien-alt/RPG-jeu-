@@ -1,6 +1,7 @@
 #ifndef OBJET_H
 #define OBJET_H
 #include "Personnage.h"
+#include "Arme.h"
 
 using namespace std;
 
