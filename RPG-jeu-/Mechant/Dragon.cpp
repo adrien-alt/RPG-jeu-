@@ -12,9 +12,11 @@ Dragon::Dragon()
     setPouvoir(300);
     setMana(300);
     setProtection(500);
+    setCapacite(300);
 
     potionVie = 30;
     quantitePotionVie = 3;
+    phaseDeuxActive = false;
 }
 
 Dragon::~Dragon()
@@ -45,7 +47,7 @@ void Dragon::jouerTour(Personnage* cible)
 {
     int degats;
 
-    if (RecupPointVie() < 300 && quantitePotionVie > 0)
+    if (RecupPointVie() < 700 && quantitePotionVie > 0)
     {
         seSoigner(potionVie);
         quantitePotionVie--;
@@ -67,3 +69,54 @@ void Dragon::jouerTour(Personnage* cible)
         cout << "Le Dragon attaque !" << endl;
     }
 }
+bool Dragon::phaseDeux()
+{
+    return RecupPointVie() < 500 && quantitePotionVie > 0 && !phaseDeuxActive ;
+}
+void Dragon::passageBoss(Personnage* cible)
+{
+    int degats;
+    if(phaseDeux())
+    {
+        phaseDeuxActive = true;
+        seSoigner(potionVie);
+        degats = Capacite();
+        cible ->RecevoirDegats(degats);
+        seSoigner(potionVie);
+        quantitePotionVie--;
+        cout<<"Le dragon passe dans sa deuxième phases"<<endl;
+        if(cible->RecupPointVie() == 0)
+        {
+            cout<<"Le hero et mort"<<endl;
+            return;
+        }
+    }   
+    else if (phaseDeuxActive)
+    {
+        degats = Capacite();
+        cible->RecevoirDegats(degats);
+        if(cible->RecupPointVie() == 0)
+        {
+            cout<<"Le hero et mort"<<endl;
+            return;
+        }
+        degats = Attaquer();
+        cible->RecevoirDegats(degats);
+        if(cible->RecupPointVie() == 0)
+        {
+            cout<<"Le hero et mort"<<endl;
+            return;
+        }
+    }
+    else
+    {
+        degats = Attaquer();
+        cible-> RecevoirDegats(degats);
+        if(cible->RecupPointVie() == 0)
+        {
+            cout<<"Le hero et mort"<<endl;
+            return;
+        }
+    }
+}
+    

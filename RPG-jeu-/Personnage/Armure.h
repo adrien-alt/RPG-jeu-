@@ -22,8 +22,9 @@ class Armure
     int getJambiere();
     int getCasque();
     int getBras();
-
     int protectionArmure(Personnage*bouclier, int choix);
+
+    void choixArmure(); 
 
 };
 #endif

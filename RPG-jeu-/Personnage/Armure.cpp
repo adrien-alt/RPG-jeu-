@@ -65,3 +65,6 @@ int Armure::protectionArmure(Personnage*bouclier, int choix)
     }
     return protectionTotaux;
 }
+void Armure::choixArmure()
+{
+}

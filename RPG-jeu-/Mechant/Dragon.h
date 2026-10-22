@@ -11,6 +11,7 @@ private:
     int mana;
     int potionVie;
     int quantitePotionVie;
+    bool phaseDeuxActive;
 
 public:
     Dragon();
@@ -19,9 +20,10 @@ public:
     int Capacite();
     int Mana();
 
+    bool phaseDeux();
     void setPouvoir(int pouvoir);
     void setMana(int power);
-
     void jouerTour(Personnage* cible) override;
+    void passageBoss(Personnage* cible);
 };
 #endif
