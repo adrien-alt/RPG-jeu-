@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b5xfxejnhjjfr"]
+
+[ext_resource type="Script" uid="uid://bnf6if3ds6555" path="res://sauvegarde.gd" id="1_ga421"]
+
+[node name="Sauvegarde" type="Node2D" unique_id=586893146]
+script = ExtResource("1_ga421")
+
+[node name="Control" type="Control" parent="." unique_id=1903165711]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1113690269]
+layout_mode = 1
+offset_right = 152.0
+offset_bottom = 58.0
+
+[node name="Label" type="Label" parent="Control/VBoxContainer" unique_id=124909885]
+layout_mode = 2
+text = "Aucune sauvegarde"
+
+[node name="BouttonRetour" type="Button" parent="Control/VBoxContainer" unique_id=1736671886]
+layout_mode = 2
+text = "Retour"
+
+[connection signal="pressed" from="Control/VBoxContainer/BouttonRetour" to="." method="_on_boutton_retour_pressed"]

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://r6fh2b1lvtbh"]
+
+[ext_resource type="Script" uid="uid://brussojpixopg" path="res://menu_principal.gd" id="1_bj1uy"]
+
+[node name="MenuPrincipal" type="Node2D" unique_id=544324437]
+position = Vector2(-1, 0)
+script = ExtResource("1_bj1uy")
+
+[node name="Control" type="Control" parent="." unique_id=112232922]
+layout_mode = 3
+anchors_preset = 0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ConteneurBouton" type="VBoxContainer" parent="Control" unique_id=1819804890]
+propagate_maximum_size = false
+layout_mode = 0
+offset_right = 127.0
+offset_bottom = 101.0
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="TitreJeu" type="Label" parent="Control/ConteneurBouton" unique_id=963704508]
+layout_mode = 2
+text = "Mon RPG"
+
+[node name="BouttonNouvellePartie" type="Button" parent="Control/ConteneurBouton" unique_id=1445689814]
+layout_mode = 2
+text = "Nouvelle Partie"
+
+[node name="BoutonContinuer" type="Button" parent="Control/ConteneurBouton" unique_id=1058017112]
+layout_mode = 2
+text = "Continuez"
+
+[node name="ButtonQuittez" type="Button" parent="Control/ConteneurBouton" unique_id=1568891630]
+layout_mode = 2
+text = "Quittez"
+
+[connection signal="pressed" from="Control/ConteneurBouton/BouttonNouvellePartie" to="." method="_on_boutton_nouvelle_partie_pressed"]
+[connection signal="pressed" from="Control/ConteneurBouton/BoutonContinuer" to="." method="_on_bouton_continuer_pressed"]
+[connection signal="pressed" from="Control/ConteneurBouton/ButtonQuittez" to="." method="_on_button_quittez_pressed"]
