@@ -26,8 +26,8 @@ int main()
     Personnage *actif = nullptr;
     Hero *hero = new Hero();
     Ennemi *ennemi = nullptr;
-    Objet potionVie;
-    Objet potionAttaque;
+    Objet potionVie("potion de vie", 3);
+    Objet potionAttaque("potion d'attaque", 2);
     Arme arme;
     Armure armure;
     Inventaire inventaire;
@@ -45,6 +45,7 @@ int main()
     inventaire.afficherInventaire();
 
     inventaire.ajouterObjet(potionAttaque);
+    inventaire.ajouterObjet(potionVie);
     inventaire.afficherInventaire();
 
     inventaire.retirerObjet(0);
@@ -321,49 +322,51 @@ int main()
         if (reponseInventaire == "oui" || reponseInventaire == "Oui")
         {
             cout << "Que prenez-vous ?" << endl;
-            cout << "1. Potion de vie : "<< potionVie.recupererQuantiteVie() << endl;
-            cout << "2. Potion d'attaque : "<< potionAttaque.recupererQuantiteAttaque() << endl;
+            cout << "1. Potion de vie : "<< potionVie.recupererQuantite() << endl;
+            cout << "2. Potion d'attaque : "<< potionAttaque.recupererQuantite() << endl;
             cin >> choix;
 
-            if (choix == 1)
-            {
-                if (potionVie.recupererQuantiteVie() > 0 && actif->RecupPointVie() > 0)
-                {
-                    potionVie.PotionVie(*actif);
-                    potionVie.quantiteRestantVie();
-                    cout << "Potions de vie restantes : "<< potionVie.recupererQuantiteVie() << endl;
-                }
-                else
-                {
-                    cout << "Tu n'as plus de potions de vie !" << endl;
-                }
-            }
-            else if (choix == 2)
-            {
-                if (potionAttaque.recupererQuantiteAttaque() > 0)
-                {
-                    potionAttaque.PotionAttaque(*ennemi);
-                    potionAttaque.quantiteRestantAttaque();
 
-                    if (ennemi->RecupPointVie() <= 0)
-                    {
-                        cout << "L'ennemi est mort !" << endl;
-                        break;
-                    }
-                    cout << "PV de l'ennemi : "<< ennemi->RecupPointVie() << endl;
-                    cout << "Potions d'attaque restantes : "<< potionAttaque.recupererQuantiteAttaque() << endl;
-                }
-                else
-                {
-                    cout << "Tu n'as plus de potions d'attaque !" << endl;
-                }
+        if (choix == 1)
+        {
+            if (potionVie.recupererQuantite() > 0 && actif->RecupPointVie() > 0)
+            {
+                potionVie.PotionVie(*actif);
+                potionVie.quantiteRestante();
+
+                cout << "Potions de vie restantes : "
+                    << potionVie.recupererQuantite() << endl;
             }
             else
             {
-                cout << "Choix invalide !" << endl;
+                cout << "Tu n'as plus de potions de vie !" << endl;
             }
         }
-        // Proposer de changer de personnage
+
+        else if (choix == 2)
+        {
+            if (potionAttaque.recupererQuantite() > 0)
+            {
+                potionAttaque.PotionAttaque(*ennemi);
+                potionAttaque.quantiteRestante();
+                if (ennemi->RecupPointVie() <= 0)
+                {
+                    cout << "L'ennemi est mort !" << endl;
+                    break;
+                }
+                cout << "PV de l'ennemi : "<< ennemi->RecupPointVie() << endl;
+                cout << "Potions d'attaque restantes : "<< potionAttaque.recupererQuantite() << endl;
+            }
+            else
+            {
+                cout << "Tu n'as plus de potions d'attaque !" << endl;
+            }
+        }
+        else
+        {
+            cout << "Choix invalide !" << endl;
+        }
+                // Proposer de changer de personnage
         cout << "Voulez-vous changer de personnage ? (oui/non)" << endl;
         cin >> binaire;
         if (binaire == "oui" || binaire == "Oui")
@@ -400,4 +403,5 @@ int main()
     delete compagnon;
     delete ennemi;
     return 0;
+    }
 }

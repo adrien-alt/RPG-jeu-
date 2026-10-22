@@ -2,28 +2,27 @@
 #define OBJET_H
 #include "Personnage.h"
 #include "Arme.h"
-
+#include <string>
 using namespace std;
 
 class Objet
 {
 private:
-    int potionVie;
-    int potionAttaque;
-    int quantiteDePotionVie;
-    int quantiteDePotionAttaque;
+    int valeurPotion;
+    int quantite;
+    string nom;
 
 
 public:
-    Objet();
+    Objet(string nomObjet, int quantite);
     ~Objet();
-    int recupererQuantiteVie();
-    int recupererQuantiteAttaque();
+    int recupererQuantite()const;
 
-    void quantiteRestantVie();
-    void quantiteRestantAttaque();
+    void quantiteRestante();
     void PotionVie(Personnage& personnage);
     void PotionAttaque(Personnage& personnage);
+
+    string getnomObjet()const;
 };
 
 #endif

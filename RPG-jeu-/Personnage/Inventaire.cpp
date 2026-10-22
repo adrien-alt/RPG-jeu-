@@ -25,6 +25,8 @@ void Inventaire::afficherInventaire()const
     for(size_t i = 0; i<objets.size(); i++)
     {
         cout<<"Il y a un objet dans ton inventaire: "<<endl;
+        cout << objets[i].getnomObjet()<< endl;
+        cout<<"Combien de potions as-tu:"<<endl;
     }
 }
 void Inventaire::retirerObjet(int valeur)

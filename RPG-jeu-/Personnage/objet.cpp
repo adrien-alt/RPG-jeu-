@@ -1,14 +1,15 @@
 #include "objet.h"
 #include "Personnage.h"
+#include <iostream>
+#include <string>
 
 using namespace std;
 
-Objet::Objet()
+Objet::Objet(string nomObjet, int quantite)
 {
-    potionVie = 30;
-    potionAttaque = 30;
-    quantiteDePotionVie =3;
-    quantiteDePotionAttaque = 3;
+    nom = nomObjet;
+    this-> quantite = quantite;
+    valeurPotion = 30;
 }
 Objet::~Objet()
 {
@@ -16,31 +17,24 @@ Objet::~Objet()
 }
 void Objet::PotionVie(Personnage& personnage)
 {
-    personnage.seSoigner(potionVie);
+    personnage.seSoigner(valeurPotion);
 }
 void Objet::PotionAttaque(Personnage& personnage)
 {
-    personnage.degatPotion(potionAttaque);
+    personnage.degatPotion(valeurPotion);
 }
-void Objet::quantiteRestantVie()
+void Objet::quantiteRestante()
 {
-    if (quantiteDePotionVie > 0)
+    if (quantite > 0)
     {
-        quantiteDePotionVie = quantiteDePotionVie - 1;
+        quantite--;
     }
 }
-void Objet::quantiteRestantAttaque()
+int Objet::recupererQuantite() const
 {
-    if(quantiteDePotionAttaque > 0)
-    {
-        quantiteDePotionAttaque = quantiteDePotionAttaque - 1;
-    }
+    return quantite;
 }
-int Objet::recupererQuantiteAttaque()
+string Objet::getnomObjet()const
 {
-    return quantiteDePotionAttaque;
-}
-int Objet::recupererQuantiteVie()
-{
-    return quantiteDePotionVie;
+    return nom;
 }
