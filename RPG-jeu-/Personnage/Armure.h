@@ -6,14 +6,14 @@ using namespace std;
 
 class Armure
 {
-    private:
+private:
     string nomArmure;
     int plastron;
     int jambiere;
     int casque;
     int bras;
 
-    public:
+public:
     Armure();
     ~Armure();
     string getNomArmure();
@@ -22,9 +22,8 @@ class Armure
     int getJambiere();
     int getCasque();
     int getBras();
-    int protectionArmure(Personnage*bouclier, int choix);
+    int protectionArmure(Personnage *personnage, int choix);
 
-    void choixArmure(); 
-
+    void choixArmure();
 };
 #endif

@@ -22,10 +22,10 @@ using namespace std;
 
 int main()
 {
-    Personnage* compagnon = nullptr;
-    Personnage* actif = nullptr;
-    Hero* hero = new Hero();
-    Ennemi* ennemi = nullptr;
+    Personnage *compagnon = nullptr;
+    Personnage *actif = nullptr;
+    Hero *hero = new Hero();
+    Ennemi *ennemi = nullptr;
 
     Objet potionVie("potion de vie", 3);
     Objet potionAttaque("potion d'attaque", 2);
@@ -224,7 +224,6 @@ int main()
         armureCompagnon = 5;
     }
 
-    // Boucle principale du combat
     while (ennemi->RecupPointVie() > 0 &&
            (hero->RecupPointVie() > 0 ||
             compagnon->RecupPointVie() > 0))
