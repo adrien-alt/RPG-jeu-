@@ -44,4 +44,8 @@ CREATE TABLE inventaire (
         REFERENCES objet(idObjet),
 
     UNIQUE (personnageId, objetId)
+<<<<<<< HEAD
 );
+=======
+);
+>>>>>>> a14b51a4af4556c4149eadef29a8e469eef2cdbe
